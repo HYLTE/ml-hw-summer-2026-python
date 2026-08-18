@@ -2,11 +2,13 @@ import numpy as np
 
 
 class PointStorage:
-    def __init__(self):
-        self.points = np.empty((0, 2))
+    def __init__(self, n):
+        self.points = np.empty((n, 2))
+        self.count = 0
 
     def insert(self, x, y):
-        self.points = np.vstack([self.points, [x, y]])
+        self.points[self.count] = (x, y)
+        self.count += 1
 
     def knn_regression(self, x, k):
         distances = np.abs(self.points[:, 0] - x)
@@ -18,7 +20,7 @@ def main():
     n = int(input("Enter a positive integer N: "))
     k = int(input("Enter a positive integer k: "))
 
-    storage = PointStorage()
+    storage = PointStorage(n)
 
     for i in range(n):
         x = float(input(f"Enter x value of point {i + 1}: "))
