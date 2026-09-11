@@ -9,3 +9,7 @@ venv/
 # IDE
 .idea/
 .vscode/
+
+# Kaggle challenge data
+challenge/data/
+challenge/submissions/
